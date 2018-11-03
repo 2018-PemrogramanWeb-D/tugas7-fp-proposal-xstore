@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="../css/themify-icons.css">
     <!-- Main css -->
     <link href="../css/style.css?v=<?php echo time();?>" rel="stylesheet">
+
+    <script type="text/javascript" src="../js/iconwc.js"></script>
 </head>
 
 <body>
@@ -27,33 +29,43 @@
 
     <div class="nav-menu fixed-top">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav class="navbar navbar-dark navbar-expand-lg">
-                        <a class="navbar-brand" href="index.html"><img src="../images/logo.png" width="50%" class="img-fluid" alt="logo"></a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbar">
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item"> <a class="nav-link" href="../index.html">HOME <span class="sr-only">(current)</span></a> </li>
+            <nav class="navbar navbar-dark navbar-expand-lg">
 
-                                <li class="nav-item dropdown active">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Sandisk</a>
-                                        <a class="dropdown-item" href="#">Kingston</a>
-                                        <a class="dropdown-item" href="#">Transcend</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ABOUT US</a> </li>
-                                <li class="nav-item"><a href="../login.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+                <a class="d-inline-block mr-5" href="index.html"><img src="../images/logo.png" style="width:150px" alt="logo"></a>
+                <div class="input-group stylish-input-group">
+                    <input type="text" class="form-control" placeholder="Cari">
+                    <div class="input-group-addon">
+                        <button type="submit">
+                            <svg-icon>
+                                <src href="../svg/si-glyph-magnifier.svg" />
+                            </svg-icon>
+                        </button>
+                    </div>
                 </div>
-            </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"> <a class="nav-link" href="../index.html">HOME <span class="sr-only">(current)</span></a> </li>
+
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Sandisk</a>
+                                <a class="dropdown-item" href="#">Kingston</a>
+                                <a class="dropdown-item" href="#">Transcend</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link" href="#">ABOUT US</a> </li>
+                        <li class="nav-item"><a href="../login.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
+                    </ul>
+                </div>
+            </nav>
         </div>
+
     </div>
 
     <header class="bg-gradient">
@@ -61,13 +73,15 @@
     </header>
 
 
-    <div class="mb-3 bd-bottom" style="height: 15px"></div>
+    <div class="mb-3 bd-bottom">
+
+    </div>
     <div class="container-fluid bd-bottom mb-3">
         <nav class="nav-index" id="nav-index">
             <ul class="list inline">
-                <li class="list-inline-item">page1</li>
-                <li class="list-inline-item">page2</li>
-                <li class="list-inline-item">page3</li>
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Page2</a></li>
+                <li class="list-inline-item"><a href="#">Page3</a></li>
             </ul>
         </nav>
     </div>
@@ -130,112 +144,6 @@
             </nav>
             --->
             <div class="row">
-
-                <div class="col-lg-2 col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-2 col-md-3 mb-4">
                     <div class="card">
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>

@@ -114,7 +114,7 @@ h5 {
 }
 
 p {
-    color: #959094;
+    color: #737373;
 }
 
 p.lead {
@@ -211,6 +211,33 @@ p.lead {
 }
 
 
+/* SEARCH
+----------------------*/
+
+.stylish-input-group {
+    width: auto;
+}
+
+.stylish-input-group .form-control {
+    border-right: 0;
+    box-shadow: 0 0 0;
+    border-color: #ccc;
+}
+
+.stylish-input-group button {
+    border: 0;
+    height: 24px !important;
+    width: 24px !important;
+    background-color: transparent;
+}
+
+.input-group-addon {
+    background-color: white;
+}
+
+
+.nav-index {}
+
 /* NAVBAR
 ----------------------*/
 
@@ -236,6 +263,17 @@ p.lead {
 
 .navbar-nav .nav-link {
     position: relative;
+}
+
+.nav-index ul li:first-child::before {
+    padding-right: 0;
+    content: "\0020";
+}
+
+.nav-index ul li::before {
+    padding-right: 5px;
+    content: "\003E";
+    color: #ccc;
 }
 
 @media (min-width: 992px) {
@@ -654,6 +692,7 @@ header {
 body {
     font-family: 'Poppins', sans-serif;
     background: #fff;
+    color: #737373;
 }
 
 p {
@@ -661,10 +700,12 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
+
 }
 
-a, a:hover, a:focus {
+a,
+a:hover,
+a:focus {
     color: inherit;
     text-decoration: none;
     transition: all 0.3s;
@@ -672,7 +713,7 @@ a, a:hover, a:focus {
 
 /*SideBar*/
 
-.wrapper{
+.wrapper {
     display: flex;
     align-items: stretch;
 }
@@ -683,7 +724,7 @@ a, a:hover, a:focus {
     background: #fff;
     color: #47748b;
     transition: all 0.3s;
-    border: 1px solid rgba(0,0,0,.05);
+    border: 1px solid rgba(0, 0, 0, .05);
 }
 
 #sidebar.active {
@@ -696,7 +737,7 @@ a, a:hover, a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid rgba(0,0,0,.05);
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
 #sidebar ul p {
@@ -710,17 +751,18 @@ a, a:hover, a:focus {
     display: block;
 }
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
     background: #47748b;
     color: #fff;
 }
 
-.bd-bottom{
-    border-bottom: 1px solid rgba(0,0,0,.05);
+.bd-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
 
-.card{
+.card {
     width: 145px;
     margin-left: 10px;
 }
@@ -731,7 +773,8 @@ a, a:hover, a:focus {
     #sidebar {
         margin-left: -250px;
     }
+
     #sidebar.active {
         margin-left: 0;
     }
-}   
+}
