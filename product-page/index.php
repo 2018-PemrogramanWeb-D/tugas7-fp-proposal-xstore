@@ -18,7 +18,7 @@
     <!-- Themify Icons -->
     <link rel="stylesheet" href="../css/themify-icons.css">
     <!-- Main css -->
-    <link href="../css/style.css?v=<?php echo time();?>" rel="stylesheet">
+    <link href="../css/style-products.css?v=<?php echo time();?>" rel="stylesheet">
 
     <script type="text/javascript" src="../js/iconwc.js"></script>
 </head>
