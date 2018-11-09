@@ -14,20 +14,21 @@
 	<!--link href="css/style.css" rel="stylesheet"-->
 </head>  
 <body>
+    <?php require 'loginRule.php'; ?>
 	<div class="bg-gradient">
 		<div class="box">
 			<h2>LOGIN</h2>
-			<form action="" method="post">
+			<form action="login.php" method="post">
 				<div class="inputBox">
-					<input type="Email" name="" required="">
+					<input type="Email" name="mail">
 					<label>Email</label>	
 				</div>
 				<div class="inputBox">
-					<input type="password" name="" required="">
+					<input type="password" name="pass">
 					<label>Password</label>	
 				</div>
 				
-				<p id="submit"><input type="submit" name="" value="Login"></p>	
+				<p id="submit"><input type="submit" name="submit" value="Login"></p>	
 				
 				<p>Belum bergabung? <a href="register.php">Sign Up</a></p>
 			</form>
