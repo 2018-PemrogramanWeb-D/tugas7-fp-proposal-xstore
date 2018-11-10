@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -85,7 +85,6 @@
             </ul>
         </nav>
     </div>
-
 
     <div class="wrapper m-4">
         <nav id="sidebar">
