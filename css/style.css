@@ -210,34 +210,6 @@ p.lead {
     }
 }
 
-
-/* SEARCH
-----------------------*/
-
-.stylish-input-group {
-    width: auto;
-}
-
-.stylish-input-group .form-control {
-    border-right: 0;
-    box-shadow: 0 0 0;
-    border-color: #ccc;
-}
-
-.stylish-input-group button {
-    border: 0;
-    height: 24px !important;
-    width: 24px !important;
-    background-color: transparent;
-}
-
-.input-group-addon {
-    background-color: white;
-}
-
-
-.nav-index {}
-
 /* NAVBAR
 ----------------------*/
 
@@ -263,17 +235,6 @@ p.lead {
 
 .navbar-nav .nav-link {
     position: relative;
-}
-
-.nav-index ul li:first-child::before {
-    padding-right: 0;
-    content: "\0020";
-}
-
-.nav-index ul li::before {
-    padding-right: 5px;
-    content: "\003E";
-    color: #ccc;
 }
 
 .navbar-logout
@@ -309,6 +270,13 @@ p.lead {
     .navbar-nav .nav-item {
         text-align: center;
     }
+}
+.dropdown-item:hover {
+    color: white;
+    background-color: #dc3545;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
 }
 
 

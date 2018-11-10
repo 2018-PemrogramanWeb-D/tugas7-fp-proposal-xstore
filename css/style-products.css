@@ -3,44 +3,6 @@
 /* GLOBAL
 ----------------------*/
 
-@keyframes slidy {
-    0% {
-        left: 0%;
-    }
-
-    20% {
-        left: 0%;
-    }
-
-    25% {
-        left: -100%;
-    }
-
-    45% {
-        left: -100%;
-    }
-
-    50% {
-        left: -200%;
-    }
-
-    70% {
-        left: -200%;
-    }
-
-    75% {
-        left: -300%;
-    }
-
-    95% {
-        left: -300%;
-    }
-
-    100% {
-        left: -400%;
-    }
-}
-
 body {
     margin: 0;
 }
@@ -72,6 +34,10 @@ body {
 
 a {
     color: #e38cb7;
+}
+
+.card-title {
+    text-align: center;
 }
 
 a:hover,
@@ -107,6 +73,7 @@ h4 {
 }
 
 h5 {
+    text-align: center;
     font-size: 28px;
     font-weight: 300;
     color: #633991;
@@ -114,7 +81,13 @@ h5 {
 }
 
 p {
-    color: #737373;
+    color: #633991;
+    font-size: 16px;
+}
+
+.card-body p{
+    text-align: center;
+    margin: 0;
 }
 
 p.lead {
@@ -215,7 +188,7 @@ p.lead {
 ----------------------*/
 
 .stylish-input-group {
-    width: auto;
+    width: 40%;
 }
 
 .stylish-input-group .form-control {
@@ -303,6 +276,14 @@ p.lead {
         text-align: center;
     }
 }
+.dropdown-item:hover {
+    color: white;
+    background-color: #dc3545;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
 
 
 /* HERO
@@ -759,11 +740,6 @@ a[aria-expanded="true"] {
 
 .bd-bottom {
     border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.card {
-    width: 145px;
-    margin-left: 10px;
 }
 
 
