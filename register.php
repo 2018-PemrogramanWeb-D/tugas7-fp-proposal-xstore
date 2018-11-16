@@ -57,29 +57,35 @@
     <!--link href="css/style.css" rel="stylesheet"-->
 </head>  
 <body>
-
+    <?php require 'registerRule.php'?>
     <div class="bg-gradient">
         <div class="box">
             <h2>REGISTER</h2>
+            
+            <?php if(!empty($err)): ?>
+            <img src="./svg/danger.svg" height=14px/>
+            <span class="err-msg">this mail already registered</span>
+            <?php endif; ?>
+
             <form action="" method="post">
                 <div class="inputBox">
-                    <input type="text" name="" required="">
+                    <input type="text" name="front" required>
                     <label>Nama Depan</label>    
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="" required="">
+                    <input type="text" name="back">
                     <label>Nama Belakang</label>    
                 </div>
                 <div class="inputBox">
-                    <input type="Email" name="" required="">
+                    <input type="Email" name="mail" required>
                     <label>Email</label>    
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="" required="">
+                    <input type="password" name="pass" required>
                     <label>Password</label> 
                 </div>
                 
-                <p id="submit"><input type="submit" name="" value="Register"></p>  
+                <p id="submit"><input type="submit" value="Register"></p>  
                 
             </form>
         </div>
