@@ -106,11 +106,14 @@
         <div class="container">
 
             <div class="section-title">
+            <img src="gedung.jpg">
                 <h3>About Us</h3>
             </div class="section-content">
             <h4>
             We are a store estabilished since 2018. 
-            We are engaged in buying and selling electronic devices
+            We are engaged in buying and selling electronic devices. The location
+            of the store in Jl. Teknik Kimia - Gedung Teknik Informatika.
+
             </h4>
             </div>
 
