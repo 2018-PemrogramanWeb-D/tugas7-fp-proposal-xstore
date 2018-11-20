@@ -49,10 +49,10 @@
 
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"> <a class="nav-link" href="../index.html">HOME <span class="sr-only">(current)</span></a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="../index.html">HOME</a> </li>
 
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS <span class="sr-only">(current)</span></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Sandisk</a>
                                 <a class="dropdown-item" href="#">Kingston</a>
@@ -111,7 +111,18 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">Page 1</a>
+                            <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" id="toggle">Page 1</a>
+                            <ul class="collapse list-unstyled">
+                                <li>
+                                    <a href="#">subPage 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">subPage 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">subPage 3</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">Page 2</a>
@@ -256,9 +267,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <!-- // end .section -->
@@ -269,7 +278,7 @@
         </div>
 
     </footer>
-
+    
     <script type="text/javascript"></script>
     <!-- jQuery and Bootstrap -->
     <script src="../js/jquery-3.2.1.min.js"></script>
@@ -277,8 +286,21 @@
     <!-- Plugins JS -->
     <script src="../js/owl.carousel.min.js"></script>
     <!-- Custom JS -->
-    <script src="../js/script.js"></script>
-
+    <!-- <script src="../js/script.js"></script> -->
+    <script>
+        $( document ).ready(function() {
+            $('a.dropdown-toggle').on('click', function(){
+                // alert("The paragraph was clicked.");
+                if($(this).next().hasClass('show')){
+                    $(this).next().collapse('hide');
+                    $(this).attr('aria-expanded', 'false');
+                }
+                else{
+                    $(this).next().collapse('show');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
