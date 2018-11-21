@@ -39,8 +39,7 @@
         <div class="container">
             <nav class="navbar navbar-dark navbar-expand-lg">
 
-                <a class="d-inline-block mr-5" href="../index.html"><img src="../images/logo.png" style="width:150px"
-                        alt="logo"></a>
+                <a class="d-inline-block mr-5" href="../home.php"><img src="../images/logo.png" style="width:150px" alt="logo"></a>
                 <div class="input-group stylish-input-group">
                     <input type="text" class="form-control" placeholder="Cari">
                     <div class="input-group-addon">
@@ -59,7 +58,7 @@
 
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"> <a class="nav-link" href="../index.html">HOME</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="../home.php">HOME</a> </li>
 
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS <span class="sr-only">(current)</span></a>
@@ -69,7 +68,7 @@
                                 <a class="dropdown-item" href="#">Transcend</a>
                             </div>
                         </li>
-                        <li class="nav-item"> <a class="nav-link" href="#">ABOUT US</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="../aboutus.php">ABOUT US</a> </li>
                         <li class="nav-item"><a href="../login.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
                     </ul>
                 </div>

@@ -30,11 +30,11 @@
             <?php endif; ?>
             <form action="login.php" method="post">
                 <div class="inputBox">
-                    <input type="Email" name="mail" required>
+                    <input type="Email" name="mail" required="">
                     <label>Email</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="pass" required>
+                    <input type="password" name="pass" required="">
                     <label>Password</label>
                 </div>
 
