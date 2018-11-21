@@ -515,6 +515,24 @@ header {
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+/*  ABOUT US SETTING
+-------------------*/
+.section-content{
+    position: absolute;
+    top: 200px;
+    right: 800px;
+    width: 350px;
+}
+
+.section-title{
+    position: relative;
+    left: 600px;
+    width: 500px;
+}
+
+.section-title img{
+    border-radius: 50%
+}
 
 body {
     font-family: 'Poppins', sans-serif;
