@@ -70,6 +70,7 @@ h4 {
     font-size: 20px;
     font-weight: 500;
     color: #633991;
+    text-align: center;
 }
 
 h5 {
@@ -188,7 +189,7 @@ p.lead {
 ----------------------*/
 
 .stylish-input-group {
-    width: 40%;
+    width: 30%;
 }
 
 .stylish-input-group .form-control {
@@ -236,6 +237,13 @@ p.lead {
 
 .navbar-nav .nav-link {
     position: relative;
+}
+
+.navbar-logout
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
 }
 
 .nav-index ul li:first-child::before {

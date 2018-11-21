@@ -34,6 +34,12 @@
         //  print_r($result);
     ?>
     <!-- Nav Menu -->
+    <?php session_start(); 
+        if(isset($_GET['logout'])){
+            unset($_SESSION['logged-in']);
+            header('Location: home.php');
+        }
+    ?>
 
     <div class="nav-menu fixed-top">
         <div class="container">
@@ -69,7 +75,47 @@
                             </div>
                         </li>
                         <li class="nav-item"> <a class="nav-link" href="../aboutus.php">ABOUT US</a> </li>
-                        <li class="nav-item"><a href="../login.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
+                        <?php if(isset($_SESSION['logged-in'])): ?>
+                                <li class="nav-item"><a href="cart.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Cart</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-user"></span> 
+                                        <strong id="nama-atas">Hi Ivan!</strong>
+                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <div class="navbar-logout">
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <p class="text-center">
+                                                            <span class="glyphicon glyphicon-user icon-size"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <p class="text-left"><strong id="nama-bawah">RM Ivan</strong></p>
+                                                        <p class="text-left small">anjay@email.com</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="navbar-logout">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <p>
+                                                            <a href="home.php?logout=1" class="btn btn-danger btn-block">Log Out</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <?php else: ?>
+                                <li class="nav-item"><a href="login.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
+                                <?php endif; ?>
                     </ul>
                 </div>
             </nav>
@@ -162,9 +208,9 @@
                                 <a href="#">
                                     <?php echo $row['nama']; ?></a>
                             </h4>
-                            <h5>Rp
+                            <h4>Rp
                                 <?php echo number_format($row['harga'],2,",","."); ?>
-                            </h5>
+                            </h4>
                             <!-- <p class="card-text">stok </p> -->
                         </div>
                         <div class="card-footer">
