@@ -12,7 +12,8 @@
     <!-- Font -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- Themify Icons -->
@@ -24,14 +25,22 @@
 </head>
 
 <body>
-
+    <!-- db conn -->
+    <?php require '../conn.php' ?>
+    <?php 
+        $query = $db->prepare('SELECT nama, harga, gambar FROM tproduk');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        //  print_r($result);
+    ?>
     <!-- Nav Menu -->
 
     <div class="nav-menu fixed-top">
         <div class="container">
             <nav class="navbar navbar-dark navbar-expand-lg">
 
-                <a class="d-inline-block mr-5" href="../index.html"><img src="../images/logo.png" style="width:150px" alt="logo"></a>
+                <a class="d-inline-block mr-5" href="../index.html"><img src="../images/logo.png" style="width:150px"
+                        alt="logo"></a>
                 <div class="input-group stylish-input-group">
                     <input type="text" class="form-control" placeholder="Cari">
                     <div class="input-group-addon">
@@ -42,17 +51,20 @@
                         </button>
                     </div>
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
 
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"> <a class="nav-link" href="../index.html">HOME <span class="sr-only">(current)</span></a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="../index.html">HOME <span class="sr-only">(current)</span></a>
+                        </li>
 
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Sandisk</a>
                                 <a class="dropdown-item" href="#">Kingston</a>
@@ -91,8 +103,8 @@
             <ul class="list-unstyled components">
                 <p class="bd-bottom">Dummy Heading</p>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled">
                         <li>
                             <a href="#">Home 1</a>
                         </li>
@@ -108,10 +120,11 @@
                     <a href="#">About</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled">
                         <li>
-                            <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" id="toggle">Page 1</a>
+                            <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" id="toggle">Page
+                                1</a>
                             <ul class="collapse list-unstyled">
                                 <li>
                                     <a href="#">subPage 1</a>
@@ -141,131 +154,28 @@
             </ul>
         </nav>
         <div id="content">
-            
             <div class="row">
+                <?php foreach($result as $row): ?>
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                        <!-- src="http://placehold.it/700x400" -->
+                        <a href="#"><img class="card-img-top" src="../<?php echo $row['gambar']; ?>" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Item One</a>
+                                <a href="#">
+                                    <?php echo $row['nama']; ?></a>
                             </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <h5>Rp
+                                <?php echo number_format($row['harga'],2,",","."); ?>
+                            </h5>
+                            <!-- <p class="card-text">stok </p> -->
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <div class="row">
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -278,7 +188,7 @@
         </div>
 
     </footer>
-    
+
     <script type="text/javascript"></script>
     <!-- jQuery and Bootstrap -->
     <script src="../js/jquery-3.2.1.min.js"></script>
@@ -286,16 +196,15 @@
     <!-- Plugins JS -->
     <script src="../js/owl.carousel.min.js"></script>
     <!-- Custom JS -->
-    <!-- <script src="../js/script.js"></script> -->
+    <script src="../js/script.js"></script>
     <script>
-        $( document ).ready(function() {
-            $('a.dropdown-toggle').on('click', function(){
+        $(document).ready(function () {
+            $('a.dropdown-toggle').on('click', function () {
                 // alert("The paragraph was clicked.");
-                if($(this).next().hasClass('show')){
+                if ($(this).next().hasClass('show')) {
                     $(this).next().collapse('hide');
                     $(this).attr('aria-expanded', 'false');
-                }
-                else{
+                } else {
                     $(this).next().collapse('show');
                 }
             });

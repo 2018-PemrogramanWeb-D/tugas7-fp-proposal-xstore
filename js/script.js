@@ -11,7 +11,7 @@ Copyright © All rights Reserved
 
 $(function () {
     "use strict";
-
+    
     /*-----------------------------------
      * FIXED  MENU - HEADER
      *-----------------------------------*/
@@ -117,5 +117,5 @@ $(function () {
         // in our CSS
         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
-
+    
 }); /* End Fn */
