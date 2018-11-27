@@ -38,7 +38,7 @@
                         <a class="navbar-brand" href="home.php"><img src="images/logo.png" width="50%" class="img-fluid" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                         <div class="collapse navbar-collapse" id="navbar">
                             <ul class="navbar-nav ml-auto">
-                                <li class="nav-item"> <a class="nav-link active" href="home.php">HOME <span class="sr-only">(current)</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link active" href="home.php">HOME</a> </li>
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
@@ -50,11 +50,11 @@
                                 </li>
                                 <li class="nav-item"> <a class="nav-link" href="aboutus.php">ABOUT US</a> </li>
                                 <?php if(isset($_SESSION['logged-in'])): ?>
-                                <li class="nav-item"><a href="cart.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Cart</a></li>
+                                <li class="nav-item"><a href="cart.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Cart</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <span class="glyphicon glyphicon-user"></span> 
-                                        <strong id="nama-atas">Hi Ivan!</strong>
+                                        <strong id="nama-atas">Hi RM Ivan!</strong>
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
@@ -63,11 +63,11 @@
                                                 <div class="row">
                                                     <div class="col-lg-4">
                                                         <p class="text-center">
-                                                            <span class="glyphicon glyphicon-user icon-size"></span>
+                                                            <span class="glyphicon glyphicon-user icon-size"><img src="https://static.zerochan.net/Yasushi.full.414275.jpg" width="100%"></span>
                                                         </p>
                                                     </div>
                                                     <div class="col-lg-8">
-                                                        <p class="text-left"><strong id="nama-bawah">RM Ivan</strong></p>
+                                                        <p class="text-left nama-bawah"><strong>RM Ivan</strong></p>
                                                         <p class="text-left small">anjay@email.com</p>
                                                     </div>
                                                 </div>
@@ -109,9 +109,10 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner h-50">
-                    <div class="carousel-item active" style="background-image: url('http://www.bhmpics.com/walls/marina_bay_sand-other.jpg')"></div>
-                    <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')"></div>
-                    <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')"></div>
+                    <div class="carousel-item active" style="background-image: url('https://storage.googleapis.com/app-nesia-wordpress-production/2017/08/Rufus.jpg')"></div>
+                    <div class="carousel-item" style="background-image: url('https://winpoin.com/wp-content/uploads/2016/06/sandiskdualultra_7.jpg')"></div>
+                    <div class="carousel-item" style="background-image: url('https://i0.wp.com/www.beritainfo.web.id/wp-content/uploads/2018/03/Cara-Memperbaiki-Flashdisk.jpg?resize=480%2C270&ssl=1')"></div>
+                    <!--div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')"></div-->
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -292,6 +292,14 @@ p.lead {
     display: block;
 }
 
+#nama-atas {
+    color: #fff;
+    font-size: 15px;   
+}
+
+#nama-bawah {
+    color: #fc73b4;
+}
 
 
 /* HERO
