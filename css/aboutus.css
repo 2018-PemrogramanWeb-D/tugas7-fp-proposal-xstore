@@ -634,3 +634,12 @@ a[aria-expanded="true"] {
     padding-bottom: 0px;
     padding-top: 0px;
 }
+
+#nama-atas {
+    color: #fff;
+    font-size: 15px;   
+}
+
+#nama-bawah {
+    color: #fc73b4;
+}

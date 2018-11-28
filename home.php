@@ -36,9 +36,10 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner h-50">
-                    <div class="carousel-item active" style="background-image: url('http://www.bhmpics.com/walls/marina_bay_sand-other.jpg')"></div>
-                    <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')"></div>
-                    <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')"></div>
+                    <div class="carousel-item active" style="background-image: url('https://storage.googleapis.com/app-nesia-wordpress-production/2017/08/Rufus.jpg')"></div>
+                    <div class="carousel-item" style="background-image: url('https://winpoin.com/wp-content/uploads/2016/06/sandiskdualultra_7.jpg')"></div>
+                    <div class="carousel-item" style="background-image: url('https://i0.wp.com/www.beritainfo.web.id/wp-content/uploads/2018/03/Cara-Memperbaiki-Flashdisk.jpg?resize=480%2C270&ssl=1')"></div>
+                    <!--div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')"></div-->
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
