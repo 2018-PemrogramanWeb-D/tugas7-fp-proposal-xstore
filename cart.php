@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/themify-icons.css">
     <!-- Main css -->
     <link href="css/style-products.css" rel="stylesheet">
-	<!-- Favicons -->
+  <!-- Favicons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
   </head>
 <body>
@@ -111,15 +111,15 @@ Navigation Bar Section
 <!-- 
 Body Section 
 -->
-	<div class="mb-3 bd-bottom">
+  <div class="mb-3 bd-bottom">
 
     </div>
-	
+  
 
-	<div class="row">
-	
-	<h2>Check Out</h2>
-		<table class="table table-bordered">
+  <div class="row">
+  
+  <h2>Check Out</h2>
+    <table class="table table-bordered">
               <thead>
                 <tr>
                   <th>Product</th>
@@ -127,7 +127,7 @@ Body Section
                   <th>Unit price</th>
                   <th>Qty </th>
                   <th>Total</th>
-				</tr>
+        </tr>
               </thead>
               <tbody>
                 <tr>
@@ -135,34 +135,34 @@ Body Section
                   <td>Toshiba Flashdisk Transmemory Hayabusa Putih 16GB<br>Carate : 22<br>Model : n/a</td>
                   <td>Rp 54.500</td>
                   <td>
-					
-				  <div class="input-append">
-					<button class="btn" type="button">-</button><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="2"><button class="btn" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
-				</div>
-				</td>
+          
+          <div class="input-append">
+          <button class="btn" type="button">-</button><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="2"><button class="btn" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
+        </div>
+        </td>
                   <td>Rp 109.000</td>
                 </tr>
-				<tr>
+        <tr>
                   <td><img width="100" src="upload/pendrive-adata-8gb-c008.jpg" alt=""></td>
                   <td>Adata Ultra USB 3.0 100MB/s Flashdisk 8GB C008<br>Carate:24 <br>Model:HBK24</td>
                   <td>Rp 26.700</td>
                   <td>
-				  <div class="input-append">
-					<button class="btn btn-mini" type="button">-</button><input class="span1" style="max-width:34px" placeholder="1" size="16" type="text"><button class="btn btn-mini" type="button">+</button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
-				</div>
-				  </td>
+          <div class="input-append">
+          <button class="btn btn-mini" type="button">-</button><input class="span1" style="max-width:34px" placeholder="1" size="16" type="text"><button class="btn btn-mini" type="button">+</button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
+        </div>
+          </td>
                   <td>Rp 26.700</td>
                 </tr>
                 <tr>
-                  <td colspan="4" class="alignR">Total products:	</td>
+                  <td colspan="4" class="alignR">Total products:  </td>
                   <td> Rp 135.700</td>
                 </tr>
-				</tbody>
+        </tbody>
             </table><br/>
-		
-		
-    <a href="login.php" ><button class="btn-primary">Checkout</button></a>			
-	
+    
+    
+    <a href="login.php" ><button class="btn-primary">Checkout</button></a>      
+  
 
 
 
