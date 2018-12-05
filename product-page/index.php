@@ -217,6 +217,7 @@
                             <!-- <p class="card-text">stok </p> -->
                         </div>
                         <div class="card-footer">
+                            <a class="btn btn-danger">Add to Cart</a>
                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                         </div>
                     </div>
