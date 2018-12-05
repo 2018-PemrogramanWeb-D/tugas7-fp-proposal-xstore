@@ -12,6 +12,15 @@
         
         if(!empty($hasil)){
             $_SESSION['logged-in'] = $hasil['depan'];
+
+            $location = 'userdata/'.$hasil['depan'].'.json';
+            // retrive db json
+            if($usercart = file_get_contents($location, TRUE)){
+                $_SESSION['cart']= json_decode($usercart);
+            }else{
+                $_SESSION['cart']= array('total'=>0);
+            }
+
             header('Location: home.php');
         }
         else{

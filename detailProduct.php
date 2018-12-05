@@ -23,13 +23,20 @@
 
 <body>
 
-    <!-- Nav Menu -->
+    <!-- LogOut Logic -->
     <?php session_start(); 
         if(isset($_GET['logout'])){
+            $filename = 'userdata/'.$_SESSION['logged-in'].'.json';
+            file_put_contents($filename ,json_encode($_SESSION['cart'], FILE_APPEND) );
+            
+            unset($_SESSION['cart']);
             unset($_SESSION['logged-in']);
+            
             header('Location: home.php');
         }
     ?>
+    <!-- end LogOut Logic -->
+    <!-- Nav Menu -->
     <div class="nav-menu fixed-top">
         <div class="container">
             <div class="row">
