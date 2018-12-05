@@ -23,20 +23,13 @@
 
 <body>
 
-    <!-- LogOut Logic -->
+    <!-- Nav Menu -->
     <?php session_start(); 
         if(isset($_GET['logout'])){
-            $filename = 'userdata/'.$_SESSION['logged-in'].'.json';
-            file_put_contents($filename ,json_encode($_SESSION['cart'], FILE_APPEND) );
-            
-            unset($_SESSION['cart']);
             unset($_SESSION['logged-in']);
-            
             header('Location: home.php');
         }
     ?>
-    <!-- end LogOut Logic -->
-    <!-- Nav Menu -->
     <div class="nav-menu fixed-top">
         <div class="container">
             <div class="row">
@@ -114,16 +107,38 @@
         <div class="container">
 
             <div class="section-title">
-            <img src="images/iphonex.png" height="200px">
+            <img src="upload/huawei_huawei-p20-pro-smartphone---twilight--128gb--ram-6gb-_full02.jpg" height="200px">
             </div>
 
             <div class="section-content">
-            <h3>IPHONE X 256 GB Garansi Internasional</h3>
+            <h3>
+                Huawei P20 Pro ram 6GB
+            </h3>
             <h4>
-            Iphone X adalah iPhone generasi baru yang diluncurkan oleh Apple.Inc.
-            Dengan desain baru menambahkan notch dan menghilangkan tombol home yang menjadi ciri khas iPhone,
-            Menambah kesan mewah dan elegan dari sebuah produk Apple satu ini.
+                <li>
+                    Processor : Hisilicon Kirin 970 Octa-Core (4x2.4 GHz Cortex-A73 & 4x1.8 GHz Cortex-A53)
+                </li>
+                <li>
+                    GPU       : Mali-G72 MP12
+                </li>
+                <li>
+                    OS        : Android 8.1 (Oreo)
+                </li>
+                <li>
+                    Memory    : 256 GB, 8 GB RAM or 128 GB, 6 GB RAM
+                </li>
+                <li>
+                    Camera    : 40 MP, f/1.8, 27mm (wide), 1/1.7", OIS, PDAF/Laser AF
+                                20 MP B/W, f/1.6, 27mm (wide), 1/2.7", OIS, PDAF/Laser AF
+                                8 MP, f/2.4, 80mm (telephoto), 1/4", 3x optical zoom, OIS, PDAF/Laser AF
+                </li>
             </h4>
+            <h5>
+                Huawei P20 ada smartphone keluaran terbaru yang dirilis perusahaan asal Tiongkok,Huawei.
+                Smartphone ini memiliki desain yang cukup menarik dengan degradasi warna yang sangat mewah.
+                Smartphone ini juga dibekali processor terbaru yaitu Hisilicon Kirin 970 dan juga OS Android terbaru
+                yaitu Oreo 8.1. Smartphone ini juga dibekali ram 6GB sehingga dapat menambah performa smartphone ini semakin kencang.
+            </h5>
             </div>
 
         </div>
