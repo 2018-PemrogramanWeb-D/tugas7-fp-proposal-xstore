@@ -118,4 +118,7 @@ $(function () {
         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
     
+    $('a.addCartBtn').on('click', function(){
+        
+    });
 }); /* End Fn */

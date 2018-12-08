@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,11 +26,13 @@
 </head>
 
 <body>
+    <!-- db conn -->
+    <?php require_once 'conn.php' ?>
 
     <!-- LogOut Logic -->
-    <?php session_start(); 
+    <?php  
         if(isset($_GET['logout'])){
-            $filename = 'userdata/'.$_SESSION['logged-in'].'.json';
+            $filename = 'userdata/'.$_SESSION['logged-in']['user'].'.json';
             file_put_contents($filename ,json_encode($_SESSION['cart'], FILE_APPEND) );
             
             unset($_SESSION['cart']);
@@ -79,7 +82,8 @@ Navigation Bar Section
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                             <span class="glyphicon glyphicon-user"></span> 
-                                            <strong id="nama-atas">Hi RM Ivan!</strong>
+                                            <strong id="nama-atas">Hi
+                                                <?php echo $_SESSION["logged-in"]["user"]; ?></strong>
                                             <span class="glyphicon glyphicon-chevron-down"></span>
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-right">
@@ -94,8 +98,11 @@ Navigation Bar Section
                                                             </p>
                                                         </div>
                                                         <div class="col-lg-8">
-                                                            <p class="text-left"><strong>RM Ivan</strong></p>
-                                                            <p class="text-left small">anjay@email.com</p>
+                                                            <p class="text-left"><strong>
+                                                                    <?php echo $_SESSION["logged-in"]["user"]; ?></strong></p>
+                                                            <p class="text-left small">
+                                                                <?php echo $_SESSION["logged-in"]["mail"]; ?>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -147,39 +154,32 @@ Body Section
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $content = &$_SESSION['cart']['cart']; ?>
+                    <?php foreach($content as $key=>$jumlah): ?>
+                    <?php 
+                        $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk WHERE id='.$key);
+                        $query->execute();
+                        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                        $hasil = &$result[0]; 
+                        // print_r($key);
+                    ?>
                     <tr>
-                        <td><img width="100" src="upload/toshiba-flashdisk-16gb-7854-46754563-2a3b0b0acce92833e1400e4a06d9699c-catalog_233.jpg"
+                        <td><img width="100" src="<?php echo $hasil['gambar']; ?>"
                                 alt=""></td>
-                        <td>Toshiba Flashdisk Transmemory Hayabusa Putih 16GB<br>Carate : 22<br>Model : n/a</td>
-                        <td>Rp 54.500</td>
+                        <td><?php echo $hasil['nama']; ?><br>Carate : 22<br>Model : n/a</td>
+                        <td>Rp <?php echo number_format($hasil['harga'],0,",","."); ?></td>
                         <td>
 
                             <div class="input-append">
                                 <button class="btn" type="button">-</button><input class="span1" style="max-width:34px"
-                                    placeholder="1" id="appendedInputButtons" size="16" type="text" value="2"><button
+                                    placeholder="1" id="appendedInputButtons" size="16" type="text" value="<?php echo $jumlah;?>"><button
                                     class="btn" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span
                                         class="icon-remove"></span></button>
                             </div>
                         </td>
-                        <td>Rp 109.000</td>
+                        <td>Rp <?php echo number_format($hasil['harga']*$jumlah,0,",","."); ?></td>
                     </tr>
-                    <tr>
-                        <td><img width="100" src="upload/pendrive-adata-8gb-c008.jpg" alt=""></td>
-                        <td>Adata Ultra USB 3.0 100MB/s Flashdisk 8GB C008<br>Carate:24 <br>Model:HBK24</td>
-                        <td>Rp 26.700</td>
-                        <td>
-                            <div class="input-append">
-                                <button class="btn btn-mini" type="button">-</button><input class="span1" style="max-width:34px"
-                                    placeholder="1" size="16" type="text"><button class="btn btn-mini" type="button">+</button><button
-                                    class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
-                            </div>
-                        </td>
-                        <td>Rp 26.700</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" class="alignR">Total products: </td>
-                        <td> Rp 135.700</td>
-                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table><br />
 

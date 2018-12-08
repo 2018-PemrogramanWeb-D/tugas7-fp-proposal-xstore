@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require 'conn.php';
 //    unset($_SESSION['logged-in']);
     $err='';
@@ -11,16 +10,22 @@
 //        print_r($hasil['depan']);
         
         if(!empty($hasil)){
-            $_SESSION['logged-in'] = $hasil['depan'];
+            $_SESSION['logged-in'] = array();
+            $_SESSION['logged-in']["user"]= $hasil['depan'];
+            $_SESSION['logged-in']["mail"]= $hasil['mail'];
+
 
             $location = 'userdata/'.$hasil['depan'].'.json';
             // retrive db json
-            if($usercart = file_get_contents($location, TRUE)){
-                $_SESSION['cart']= json_decode($usercart);
-            }else{
-                $_SESSION['cart']= array('total'=>0);
-            }
 
+            $content = @file_get_contents($location);
+            if($content === false){
+                $_SESSION['cart'] = array('cart');
+            }
+            else{
+                $_SESSION['cart']= json_decode($content, true);
+            }
+            
             header('Location: home.php');
         }
         else{

@@ -1,3 +1,4 @@
+<?php session_start();  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,18 +27,19 @@
 
 <body>
     <!-- db conn -->
-    <?php require '../conn.php' ?>
+    <?php require_once '../conn.php' ?>
+    <?php include '../cartRule.php' ?>
     <?php 
-        $query = $db->prepare('SELECT nama, harga, gambar FROM tproduk');
+        $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk');
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        //  print_r($result);
+            
     ?>
 
     <!-- LogOut Logic -->
-    <?php session_start(); 
+    <?php 
         if(isset($_GET['logout'])){
-            $filename = 'userdata/'.$_SESSION['logged-in'].'.json';
+            $filename = 'userdata/'.$_SESSION['logged-in']['user'].'.json';
             file_put_contents($filename ,json_encode($_SESSION['cart'], FILE_APPEND) );
             
             unset($_SESSION['cart']);
@@ -82,7 +84,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <span class="glyphicon glyphicon-user"></span> 
-                                        <strong id="nama-atas">Hi RM Ivan!</strong>
+                                        <strong id="nama-atas">Hi <?php echo $_SESSION["logged-in"]["user"]; ?></strong>
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
@@ -95,8 +97,8 @@
                                                         </p>
                                                     </div>
                                                     <div class="col-lg-8">
-                                                        <p class="text-left"><strong>RM Ivan</strong></p>
-                                                        <p class="text-left small">anjay@email.com</p>
+                                                        <p class="text-left"><strong><?php echo $_SESSION["logged-in"]["user"]; ?></strong></p>
+                                                        <p class="text-left small"><?php echo $_SESSION["logged-in"]["mail"]; ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,7 +109,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <p>
-                                                            <a href="home.php?logout=1" class="btn btn-danger btn-block">Log Out</a>
+                                                            <a href="../home.php?logout=1" class="btn btn-danger btn-block">Log Out</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -217,7 +219,12 @@
                             <!-- <p class="card-text">stok </p> -->
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-danger">Add to Cart</a>
+                            
+                            <?php if(isset($_SESSION['logged-in'])): ?>
+                            <a class="btn btn-danger addCartBtn" href="?id=<?php echo $row['id']?>">Add to Cart</a>
+                            <?php else: ?>
+                            <a class="btn btn-danger" href="../login.php">Add to Cart</a>
+                            <?php endif; ?>
                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                         </div>
                     </div>

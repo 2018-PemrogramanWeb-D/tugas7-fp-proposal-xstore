@@ -1,8 +1,8 @@
 <?php
-    $user = 'ivan';
-    $pass = 'qwerty';
+    $user = 'root';
+    $pass = '';
     try{
-        $db = new PDO('mysql:host=files.000webhost.com;dbname=id8127222_xstore', $user, $pass);
+        $db = new PDO('mysql:host=localhost;dbname=xstore', $user, $pass);
     }
     catch(PDOException $e){
         print "Error:" . $e->getMessage() . "\n";

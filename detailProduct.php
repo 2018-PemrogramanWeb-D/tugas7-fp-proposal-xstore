@@ -26,6 +26,10 @@
     <!-- Nav Menu -->
     <?php session_start(); 
         if(isset($_GET['logout'])){
+            $filename = 'userdata/'.$_SESSION['logged-in']['user'].'.json';
+            file_put_contents($filename ,json_encode($_SESSION['cart'], FILE_APPEND) );
+            
+            unset($_SESSION['cart']);
             unset($_SESSION['logged-in']);
             header('Location: home.php');
         }
@@ -54,7 +58,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <span class="glyphicon glyphicon-user"></span> 
-                                        <strong id="nama-atas">Hi RM Ivan!</strong>
+                                        <strong id="nama-atas">Hi <?php echo $_SESSION["logged-in"]["user"]; ?></strong>
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
@@ -67,8 +71,8 @@
                                                         </p>
                                                     </div>
                                                     <div class="col-lg-8">
-                                                        <p class="text-left"><strong>RM Ivan</strong></p>
-                                                        <p class="text-left small">anjay@email.com</p>
+                                                        <p class="text-left"><strong><?php echo $_SESSION["logged-in"]["user"]; ?></strong></p>
+                                                        <p class="text-left small"><?php echo $_SESSION["logged-in"]["mail"]; ?></p>
                                                     </div>
                                                 </div>
                                             </div>
