@@ -27,7 +27,7 @@
 
 <body>
     <!-- db conn -->
-    <?php require_once 'conn.php' ?>
+    <?php require_once('conn.php'); ?>
 
     <!-- LogOut Logic -->
     <?php  
@@ -169,15 +169,14 @@ Body Section
                         <td><?php echo $hasil['nama']; ?><br>Carate : 22<br>Model : n/a</td>
                         <td>Rp <?php echo number_format($hasil['harga'],0,",","."); ?></td>
                         <td>
-
                             <div class="input-append">
-                                <button class="btn" type="button">-</button><input class="span1" style="max-width:34px"
+                                <button class="btn jumlah-btn" type="button" id="minus"> - </button><input class="span1" style="max-width:34px"
                                     placeholder="1" id="appendedInputButtons" size="16" type="text" value="<?php echo $jumlah;?>"><button
-                                    class="btn" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span
+                                    class="btn jumlah-btn" type="button" id="plus"> + </button><button class="btn btn-mini btn-danger" type="button"><span
                                         class="icon-remove"></span></button>
                             </div>
                         </td>
-                        <td>Rp <?php echo number_format($hasil['harga']*$jumlah,0,",","."); ?></td>
+                        <td id="subtotal">Rp <?php echo number_format($hasil['harga']*$jumlah,0,",","."); ?></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -194,12 +193,12 @@ Body Section
 
     </div><!-- /container -->
 
-
+    
     <footer class="my-5 text-center">
         <!-- Copyright removal is not prohibited! -->
         <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED. </small></p>
     </footer>
-
+  
     <script type="text/javascript"></script>
     <!-- jQuery and Bootstrap -->
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -208,6 +207,24 @@ Body Section
     <script src="js/owl.carousel.min.js"></script>
     <!-- Custom JS -->
     <script src="js/script.js"></script>
+    <script>
+        $(document).ready(function(){
+            // cart
+            $("button.jumlah-btn").on('click', function(){
+                var val = $(this).siblings("input").val();
+
+                if($(this).attr('id')=='minus'){
+                    var valMax = Math.max(1, parseInt(val)-1);
+                    $(this).siblings("input").val(valMax);
+                }
+                else{
+                    $(this).siblings("input").val(parseInt(val)+1);
+                }
+                
+                $(this).parent().parent().siblings("#subtotal").val("aye");
+            });
+        });
+    </script>
 </body>
 
 </html>
