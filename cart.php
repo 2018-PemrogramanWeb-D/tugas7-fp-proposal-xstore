@@ -164,21 +164,25 @@ Body Section
                         // print_r($key);
                     ?>
                     <tr>
-                        <td><img width="100" src="<?php echo $hasil['gambar']; ?>"
-                                alt=""></td>
-                        <td><?php echo $hasil['nama']; ?><br>Carate : 22<br>Model : n/a</td>
-                        <td>Rp <?php echo number_format($hasil['harga'],0,",","."); ?></td>
+                        <td><img width="100" src="<?php echo $hasil['gambar']; ?>" alt=""></td>
+                        <td>
+                            <?php echo $hasil['nama']; ?><br>Carate : 22<br>Model : n/a</td>
+                        <td>Rp
+                            <?php echo number_format($hasil['harga'],0,",","."); ?>
+                        </td>
                         <td>
                             <div class="input-append">
-                                <button class="btn jumlah-btn" type="button" id="minus"> - </button><input class="span1" style="max-width:34px"
-                                    placeholder="1" id="appendedInputButtons" size="16" type="text" value="<?php echo $jumlah;?>"><button
-                                    class="btn jumlah-btn" type="button" id="plus"> + </button><button class="btn btn-mini btn-danger" type="button"><span
-                                        class="icon-remove"></span></button>
+                                <button class="btn jumlah-btn" type="button" id="minus"> - </button><input class="span1"
+                                    style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"
+                                    value="<?php echo $jumlah;?>"><button class="btn jumlah-btn" type="button" id="plus">
+                                    + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
                             </div>
                         </td>
-                        <td id="subtotal">Rp <?php echo number_format($hasil['harga']*$jumlah,0,",","."); ?></td>
+                        <td id="subtotal">Rp
+                            <?php echo number_format($hasil['harga']*$jumlah,0,",","."); ?>
+                        </td>
                     </tr>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table><br />
 
@@ -193,12 +197,12 @@ Body Section
 
     </div><!-- /container -->
 
-    
+
     <footer class="my-5 text-center">
         <!-- Copyright removal is not prohibited! -->
         <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED. </small></p>
     </footer>
-  
+
     <script type="text/javascript"></script>
     <!-- jQuery and Bootstrap -->
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -208,19 +212,18 @@ Body Section
     <!-- Custom JS -->
     <script src="js/script.js"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             // cart
-            $("button.jumlah-btn").on('click', function(){
+            $("button.jumlah-btn").on('click', function () {
                 var val = $(this).siblings("input").val();
 
-                if($(this).attr('id')=='minus'){
-                    var valMax = Math.max(1, parseInt(val)-1);
+                if ($(this).attr('id') == 'minus') {
+                    var valMax = Math.max(1, parseInt(val) - 1);
                     $(this).siblings("input").val(valMax);
+                } else {
+                    $(this).siblings("input").val(parseInt(val) + 1);
                 }
-                else{
-                    $(this).siblings("input").val(parseInt(val)+1);
-                }
-                
+
                 $(this).parent().parent().siblings("#subtotal").val("aye");
             });
         });

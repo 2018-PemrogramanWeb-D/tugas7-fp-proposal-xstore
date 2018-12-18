@@ -20,7 +20,7 @@
 
             $content = @file_get_contents($location);
             if($content === false){
-                $_SESSION['cart'] = array('cart');
+                $_SESSION['cart']['cart'] = array();
             }
             else{
                 $_SESSION['cart']= json_decode($content, true);
