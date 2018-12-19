@@ -119,10 +119,6 @@
                             <input class="form-control" id="productprice" type="text" name="harga">
                         </div>
                         <div class="form-group">
-                            <label for="productprice" class="loginFormElement">Kategori Produk</label>
-                            <input class="form-control" id="productprice" type="text" name="kategori">
-                        </div>
-                        <div class="form-group">
                             <label class="control-label">Gambar Produk</label> 
                             <input class="filestyle" data-icon="false" type="file" name="image">
                         </div>            

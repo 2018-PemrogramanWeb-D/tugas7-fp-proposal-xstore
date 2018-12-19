@@ -51,9 +51,9 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="product-page/index-sandisk.php">Sandisk</a>
-                                        <a class="dropdown-item" href="product-page/index-kingston.php">Kingston</a>
-                                        <a class="dropdown-item" href="product-page/index-transcend.php">Transcend</a>
+                                        <a class="dropdown-item" href="product-page/index.php">Sandisk</a>
+                                        <a class="dropdown-item" href="product-page/index.php">Kingston</a>
+                                        <a class="dropdown-item" href="product-page/index.php">Transcend</a>
                                     </div>
                                 </li>
                                 <li class="nav-item"> <a class="nav-link active" href="aboutus.php">ABOUT US</a> </li>

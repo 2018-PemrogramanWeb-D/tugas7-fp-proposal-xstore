@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Des 2018 pada 06.39
+-- Waktu pembuatan: 19 Des 2018 pada 19.06
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.11
 
@@ -31,16 +31,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `detail_orang` (
   `mail` varchar(64) COLLATE utf8_bin NOT NULL,
   `depan` varchar(20) COLLATE utf8_bin NOT NULL,
-  `belakang` varchar(20) COLLATE utf8_bin DEFAULT NULL
+  `belakang` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data untuk tabel `detail_orang`
 --
 
-INSERT INTO `detail_orang` (`mail`, `depan`, `belakang`) VALUES
-('anjay@gmail.com', 'anjay', NULL),
-('ivan@gmail.com', 'RM Ivan', 'Indra');
+INSERT INTO `detail_orang` (`mail`, `depan`, `belakang`, `admin`) VALUES
+('andri@yahoo.com', 'Andri', 'Gunawan', 0),
+('anjay@gmail.com', 'Admin', NULL, 1),
+('ivan@gmail.com', 'RM Ivan', 'Indra', 0),
+('ivan@yahoo.com', 'Ivan', 'Indra', 0),
+('krisna@gmail.com', 'Krisna', 'Black', 0);
 
 -- --------------------------------------------------------
 
@@ -76,8 +80,11 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`mail`, `pass`) VALUES
+('andri@yahoo.com', '202cb962ac59075b964b07152d234b70'),
 ('anjay@gmail.com', '202cb962ac59075b964b07152d234b70'),
-('ivan@gmail.com', '202cb962ac59075b964b07152d234b70');
+('ivan@gmail.com', '202cb962ac59075b964b07152d234b70'),
+('ivan@yahoo.com', '202cb962ac59075b964b07152d234b70'),
+('krisna@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
@@ -113,20 +120,26 @@ CREATE TABLE `tproduk` (
   `harga` decimal(13,0) NOT NULL,
   `gambar` text COLLATE utf8_bin,
   `deskripsi` text COLLATE utf8_bin,
-  `waktu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `kategori` varchar(20) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data untuk tabel `tproduk`
 --
 
-INSERT INTO `tproduk` (`id`, `nama`, `harga`, `gambar`, `deskripsi`, `waktu`) VALUES
-(1, 'Huawei P20 PRO Smartphone - Twilight [128GB/ RAM 6', '10798999', 'upload/huawei_huawei-p20-pro-smartphone---twilight--128gb--ram-6gb-_full02.jpg', 'OS : Android 8.1 (Oreo)\r\nProsesor : Octa-core (4x2.4 GHz Cortex-A73 & 4x1.8 GHz Cortex-A53)\r\nSim Card : Hybrid Dual SIM (Nano-SIM, dual stand-by)\r\nBaterai : Non-removable Li-Po 4000 mAh battery\r\nLayar : 6.1 Inch', '2018-11-21 03:48:08'),
-(2, 'Xiaomi Redmi 6 Smartphone - Black [64 GB/ 4 GB/ O]', '2349000', 'upload/xiaomi_xiaomi-redmi-6-smartphone---black--64-gb--4-gb--o-_full02.jpg', 'OS : Android 8.1 (Oreo) Prosesor : Helio P22 Octa-core 2.0 GHz Kamera : Belakang Dual 12 MP (f/2.2, 1.25 m, PDAF) + 5 MP (f/2.2, 1.12 m, no AF, depth sensor) dan kamera depan 5 MP, 1080p Layar : 5.45 Inch Baterai : Non-removable Li-Po 3000 mAh', '2018-11-21 03:57:05'),
-(3, 'Toshiba Flashdisk Transmemory Hayabusa Putih 16GB', '54500', 'upload/toshiba-flashdisk-16gb-7854-46754563-2a3b0b0acce92833e1400e4a06d9699c-catalog_233.jpg', 'Kapasitas : 16GB', '2018-11-27 17:14:30'),
-(4, 'Sandisk Flashdisk Cruzer Blade CZ50 16GB', '45200', 'upload/861106982e715c52d5345219e3548034.jpg', '', '2018-11-27 17:15:32'),
-(5, 'Adata Ultra USB 3.0 100MB/s Flashdisk 8GB C008', '26700', 'upload/pendrive-adata-8gb-c008.jpg', '', '2018-11-27 17:17:18'),
-(6, 'Universal Flash disk 8GB Transcend New Model JF340', '32600', 'upload/transcend-otg-flashdisk-jf340-8gb.jpg', '', '2018-11-27 17:19:41');
+INSERT INTO `tproduk` (`id`, `nama`, `harga`, `gambar`, `deskripsi`, `waktu`, `kategori`) VALUES
+(1, 'Huawei P20 PRO Smartphone - Twilight [128GB/ RAM 6', '10798999', 'upload/huawei_huawei-p20-pro-smartphone---twilight--128gb--ram-6gb-_full02.jpg', 'OS : Android 8.1 (Oreo)\r\nProsesor : Octa-core (4x2.4 GHz Cortex-A73 & 4x1.8 GHz Cortex-A53)\r\nSim Card : Hybrid Dual SIM (Nano-SIM, dual stand-by)\r\nBaterai : Non-removable Li-Po 4000 mAh battery\r\nLayar : 6.1 Inch', '2018-11-21 03:48:08', NULL),
+(2, 'Xiaomi Redmi 6 Smartphone - Black [64 GB/ 4 GB/ O]', '2349000', 'upload/xiaomi_xiaomi-redmi-6-smartphone---black--64-gb--4-gb--o-_full02.jpg', 'OS : Android 8.1 (Oreo) Prosesor : Helio P22 Octa-core 2.0 GHz Kamera : Belakang Dual 12 MP (f/2.2, 1.25 m, PDAF) + 5 MP (f/2.2, 1.12 m, no AF, depth sensor) dan kamera depan 5 MP, 1080p Layar : 5.45 Inch Baterai : Non-removable Li-Po 3000 mAh', '2018-11-21 03:57:05', NULL),
+(3, 'Kingston Flashdisk Transmemory Hayabusa Putih 16GB', '54500', 'upload/toshiba-flashdisk-16gb-7854-46754563-2a3b0b0acce92833e1400e4a06d9699c-catalog_233.jpg', 'Kapasitas : 16GB', '2018-12-19 17:39:16', 'Kingston'),
+(4, 'Sandisk Flashdisk Cruzer Blade CZ50 16GB', '45200', 'upload/861106982e715c52d5345219e3548034.jpg', '', '2018-12-19 17:38:59', 'Sandisk'),
+(5, 'Kingston Ultra USB 3.0 100MB/s Flashdisk 8GB C008', '26700', 'upload/pendrive-adata-8gb-c008.jpg', '', '2018-12-19 17:46:56', 'Kingston'),
+(6, 'Universal Flashdisk 8GB Transcend New Model JF340', '32600', 'upload/transcend-otg-flashdisk-jf340-8gb.jpg', '', '2018-12-19 17:44:36', 'Transcend'),
+(7, 'Transcend Adata New Universal Flashdisk C008 1TB', '20000', 'upload/pendrive-adata-8gb-c008.jpg', '8 GB', '2018-12-19 17:47:22', 'Transcend'),
+(8, 'Sandisk Xpand X16ZY Super Ultra Lighting Port 16GB', '126000', 'upload/sandiskxpand.jpg', NULL, '2018-12-19 17:38:12', 'Sandisk'),
+(11, 'Sandisk Flashdisk Cruzer Blade CZ50A 32GB', '85500', 'upload/861106982e715c52d5345219e3548034.jpg', '', '2018-12-19 17:38:01', 'Sandisk'),
+(12, 'Universal Kingston Ultra Superr Flashdisk 128GB', '70000', 'upload/IMG_20181218_224840_scaled.jpg', '16GB', '2018-12-19 17:50:35', 'Kingston'),
+(13, 'Transcend JetFlash+++ 780 MLC USB 3.0 128GB', '1250000', 'upload/IMG_20181218_224854_scaled.jpg', '', '2018-12-19 17:45:02', 'Transcend');
 
 -- --------------------------------------------------------
 
@@ -197,7 +210,7 @@ ALTER TABLE `subkategori`
 -- AUTO_INCREMENT untuk tabel `tproduk`
 --
 ALTER TABLE `tproduk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `tspesifikasi`

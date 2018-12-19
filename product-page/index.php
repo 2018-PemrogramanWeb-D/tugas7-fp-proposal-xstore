@@ -150,12 +150,26 @@
     <div class="wrapper m-4">
         <nav id="sidebar">
             <ul class="list-unstyled components">
-                <p class="bd-bottom">Detail</p>
+                <p class="bd-bottom">Dummy Heading</p>
                 <li>
-                    <a href="../home.php">Home</a>
+                    <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Products</a>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
                     <ul class="collapse list-unstyled">
                         <li>
                             <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" id="toggle">Page
@@ -175,13 +189,19 @@
                         <li>
                             <a href="#">Page 2</a>
                         </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="../aboutus.php">About Us</a>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
                 </li>
 
-                <li><a href="../addProduct.php">Add Product</a></li>
+                <li><a href="/xstore/GitHub/tugas7-fp-proposal-xstore/addProduct.php">Add Product</a></li>
             </ul>
         </nav>
         <div id="content">
