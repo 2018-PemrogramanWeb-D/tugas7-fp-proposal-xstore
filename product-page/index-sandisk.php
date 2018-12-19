@@ -30,7 +30,7 @@
     <?php require_once '../conn.php' ?>
     <?php include '../cartRule.php' ?>
     <?php 
-        $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk');
+        $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk WHERE kategori = "Sandisk"');
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
             
@@ -74,9 +74,9 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="../product-page/index.php">Sandisk</a>
-                                        <a class="dropdown-item" href="../product-page/index.php">Kingston</a>
-                                        <a class="dropdown-item" href="../product-page/index.php">Transcend</a>
+                                        <a class="dropdown-item" href="index-sandisk.php">Sandisk</a>
+                                        <a class="dropdown-item" href="index-kingston.php">Kingston</a>
+                                        <a class="dropdown-item" href="index-transcend.php">Transcend</a>
                                     </div>
                                 </li>
                                 <li class="nav-item"> <a class="nav-link" href="../aboutus.php">ABOUT US</a> </li>
@@ -140,9 +140,8 @@
     <div class="container-fluid bd-bottom mb-3">
         <nav class="nav-index" id="nav-index">
             <ul class="list inline">
-                <li class="list-inline-item"><a href="../index.html">Home</a></li>
-                <li class="list-inline-item"><a href="#">Page2</a></li>
-                <li class="list-inline-item"><a href="#">Page3</a></li>
+                <li class="list-inline-item"><a href="#">Products</a></li>
+                <li class="list-inline-item"><a href="index-sandisk.php">Sandisk</a></li>
             </ul>
         </nav>
     </div>
@@ -157,24 +156,9 @@
                 <li>
                     <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Products</a>
                     <ul class="collapse list-unstyled">
-                        <li>
-                            <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" id="toggle">Page
-                                1</a>
-                            <ul class="collapse list-unstyled">
-                                <li>
-                                    <a href="#">subPage 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">subPage 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">subPage 3</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
+                        <li><a href="index-sandisk.php">Sandisk</a></li>
+                        <li><a href="index-kingston.php">Kingston</a></li>
+                        <li><a href="index-transcend.php">Transcend</a></li>
                     </ul>
                 </li>
                 <li>

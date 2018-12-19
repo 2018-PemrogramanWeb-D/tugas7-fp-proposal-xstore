@@ -11,11 +11,12 @@
 
             $nama = $_POST['nama'];
             $harga = $_POST['harga'];
+            $kategori = $_POST['kategori'];
             $deskripsi = $_POST['deskripsi'];
             $dir = "$folder".$_FILES["image"]["name"];
             move_uploaded_file($_FILES["image"]["tmp_name"], $dir);
 
-            $db->query("INSERT INTO `tproduk` VALUES (NULL, '$nama', '$harga', '$dir', '$deskripsi', CURRENT_TIMESTAMP)");
+            $db->query("INSERT INTO `tproduk` VALUES (NULL, '$nama', '$harga', '$dir', '$deskripsi', CURRENT_TIMESTAMP, '$kategori')");
         }    
     }
 ?>
