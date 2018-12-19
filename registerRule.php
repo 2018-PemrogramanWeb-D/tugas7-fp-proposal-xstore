@@ -9,13 +9,12 @@
         require 'conn.php';
 
         $result = $db->query("SELECT mail FROM pengguna WHERE mail='{$_POST['mail']}'")->fetch();
-        // print_r ($result);
 
         if(empty($result)){
            $db->query("INSERT INTO `pengguna` (`mail`, `pass`) VALUES ('{$_POST['mail']}', MD5('{$_POST['pass']}'))");
            $db->query("INSERT INTO `detail_orang` (`mail`, `depan`, `belakang`) VALUES ('{$_POST['mail']}', '{$_POST['front']}', '{$_POST['back']}')");
 
-           header("Location: home.php");
+        //    header("Location: home.php");
         }
         else{
             $_SESSION['err']= 1;
