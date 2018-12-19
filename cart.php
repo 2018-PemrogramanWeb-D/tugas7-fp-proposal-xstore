@@ -198,7 +198,7 @@ Body Section
             </table><br />
 
 
-            <a href="login.php"><button class="btn-primary">Checkout</button></a>
+            <a href="checkout.php"><button class="btn-primary">Checkout</button></a>
 
 
 
@@ -224,6 +224,7 @@ Body Section
     <script src="js/owl.carousel.min.js"></script>
     <!-- Custom JS -->
     <script src="js/script.js"></script>
+    
     <script>
         $(document).ready(function () {
             // cart
