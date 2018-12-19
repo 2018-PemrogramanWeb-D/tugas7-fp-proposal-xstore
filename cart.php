@@ -154,7 +154,16 @@ Body Section
                     </tr>
                 </thead>
                 <tbody>
+
                     <?php $content = &$_SESSION['cart']['cart']; ?>
+                    <!-- logic menghapus barang -->
+                    <?php 
+                        if(isset($_GET['rmv'])){
+                            unset($content[$_GET['rmv']]);
+                        }
+                    ?>
+                    
+                    <!-- loop cart -->
                     <?php foreach($content as $key=>$jumlah): ?>
                     <?php 
                         $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk WHERE id='.$key);
@@ -172,10 +181,12 @@ Body Section
                         </td>
                         <td>
                             <div class="input-append">
+                                <p style="display:none" id="asoy"><?php echo $hasil['harga']; ?></p>
                                 <button class="btn jumlah-btn" type="button" id="minus"> - </button><input class="span1"
                                     style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"
                                     value="<?php echo $jumlah;?>"><button class="btn jumlah-btn" type="button" id="plus">
-                                    + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
+                                    + </button>
+                                    <button class="btn btn-mini btn-danger remove-btn" type="button" onclick="location.href='cart.php?rmv=<?php echo $key; ?>'"><span class="icon-remove"></span></button>
                             </div>
                         </td>
                         <td id="subtotal">Rp
@@ -206,6 +217,8 @@ Body Section
     <script type="text/javascript"></script>
     <!-- jQuery and Bootstrap -->
     <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.formatCurrency-1.4.0.min.js"></script>
+
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Plugins JS -->
     <script src="js/owl.carousel.min.js"></script>
@@ -214,6 +227,7 @@ Body Section
     <script>
         $(document).ready(function () {
             // cart
+
             $("button.jumlah-btn").on('click', function () {
                 var val = $(this).siblings("input").val();
 
@@ -223,8 +237,12 @@ Body Section
                 } else {
                     $(this).siblings("input").val(parseInt(val) + 1);
                 }
-
-                $(this).parent().parent().siblings("#subtotal").val("aye");
+                
+                var harga = $(this).siblings("p").text();
+                val = $(this).siblings("input").val();
+                
+                $(this).parent().parent().siblings("#subtotal").html(parseInt(val)*harga);
+                $(this).parent().parent().siblings("#subtotal").formatCurrency({ symbol:'Rp ' , digitGroupSymbol:'.', roundToDecimalPlace:0});
             });
         });
     </script>
