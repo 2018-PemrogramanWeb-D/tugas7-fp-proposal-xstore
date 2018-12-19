@@ -186,7 +186,7 @@ Body Section
                                     style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"
                                     value="<?php echo $jumlah;?>"><button class="btn jumlah-btn" type="button" id="plus">
                                     + </button>
-                                    <button class="btn btn-mini btn-danger remove-btn" type="button" onclick="location.href='cart.php?rmv=<?php echo $key; ?>'"><span class="icon-remove"></span></button>
+                                    <button class="btn btn-mini btn-danger remove-btn" type="button" onclick="location.href='cart.php?rmv=<?php echo $key; ?>'">Remove</button>
                             </div>
                         </td>
                         <td id="subtotal">Rp
