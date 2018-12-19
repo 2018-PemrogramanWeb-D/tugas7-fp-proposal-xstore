@@ -200,6 +200,8 @@
                 <li>
                     <a href="#">Contact</a>
                 </li>
+
+                <li><a href="/xstore/GitHub/tugas7-fp-proposal-xstore/addProduct.php">Add Product</a></li>
             </ul>
         </nav>
         <div id="content">
