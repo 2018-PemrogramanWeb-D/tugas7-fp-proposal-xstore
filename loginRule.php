@@ -4,6 +4,7 @@
     $err='';
 
     function checkLogin(array $data, &$db){
+        
         $condition = "'{$data[0]}'=pengguna.mail AND '{$data[1]}'=pengguna.pass AND pengguna.mail = b.mail";
  
         $hasil = $db->query("SELECT pengguna.*, b.depan FROM pengguna, detail_orang b WHERE ".$condition)->fetch();
