@@ -29,6 +29,16 @@
     <!-- db conn -->
     <?php require_once '../conn.php' ?>
     <?php include '../cartRule.php' ?>
+
+    <!-- nama kategori -->
+    <?php 
+        if(isset($_GET['kategori'])){
+            $query = $db->prepare('SELECT subkategori FROM tkategori WHERE id='.$_GET['kategori']);
+            $query->execute();
+            $hasil = $query->fetchAll(PDO::FETCH_ASSOC);
+            $nama_kategori = $hasil[0]['subkategori'];
+        }
+    ?>
     <!-- rekursif sub kategori -->
     <?php 
         $query = $db->prepare('SELECT * FROM tkategori');
@@ -68,7 +78,7 @@
                     $sub_display .= printCategories($content['anchestor'], 0);
                 }
                 else{
-                    $sub_display .='<li><a href="#">'.$content['subkategori'].'</a>';
+                    $sub_display .='<li><a href="index.php?kategori='.$content['id'].'">'.$content['subkategori'].'</a>';
                 }
                 $sub_display .= '</li>';
             }
@@ -89,15 +99,7 @@
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
     ?>
-    <!-- nama kategori -->
-    <?php 
-        if(isset($_GET['kategori'])){
-            $query = $db->prepare('SELECT subkategori FROM tkategori WHERE id='.$_GET['kategori']);
-            $query->execute();
-            $hasil = $query->fetchAll(PDO::FETCH_ASSOC);
-            $nama_kategori = $hasil[0]['subkategori'];
-        }
-    ?>
+    
     <!-- LogOut Logic -->
     <?php 
         if(isset($_GET['logout'])){
