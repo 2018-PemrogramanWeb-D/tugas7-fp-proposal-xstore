@@ -29,11 +29,65 @@
     <!-- db conn -->
     <?php require_once '../conn.php' ?>
     <?php include '../cartRule.php' ?>
+    <!-- rekursif sub kategori -->
     <?php 
-        $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk');
+        $query = $db->prepare('SELECT * FROM tkategori');
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-            
+
+        // mendapatkan struktur tree kategori
+        function buildKategori(array $contents, $parent=0){
+            $branch = array();
+
+            foreach($contents as $content){
+                if($content['parent']==$parent){
+                    $anchestor = buildKategori($contents, $content['id']);
+                    if($anchestor){
+                        $content['anchestor'] = $anchestor;
+                    }
+                    $branch[] = $content;
+                }
+            }
+            return $branch;
+        }
+           
+        // Ngeprint semua sidebar kategori
+        function printCategories(array $contents, $isAwal=1){
+            $display ="";
+            if($isAwal==1){
+                $display = '<ul class="list-unstyled components">';
+            }else{
+                $display = '<ul class="collapse list-unstyled">';
+            }
+
+            $sub_display = "";
+            foreach($contents as $content){
+                if(isset($content['anchestor'])){
+                    $sub_display .= '<li><a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">'.
+                            $content['subkategori'].'</a>';
+                    $sub_display .= printCategories($content['anchestor'], 0);
+                }
+                else{
+                    $sub_display .='<li><a href="#">'.$content['subkategori'].'</a>';
+                }
+                $sub_display .= '</li>';
+            }
+            $display .= $sub_display. '</ul>';
+            return $display;
+        }
+
+        $categories_tree = buildKategori($result);
+        $categories_list = printCategories($categories_tree);
+    ?>
+    <?php
+        if(isset($_GET['kategori'])){
+            $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk');
+        }
+        else{
+            $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk');
+        } 
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
     <!-- LogOut Logic -->
@@ -55,7 +109,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-dark navbar-expand-lg">
-                        <a class="navbar-brand" href="../home.php"><img src="../images/logo.png" width="150px" class="img-fluid" alt="logo"></a> 
+                        <a class="navbar-brand" href="../home.php"><img src="../images/logo.png" width="150px" class="img-fluid"
+                                alt="logo"></a>
                         <div class="input-group stylish-input-group">
                             <input type="text" class="form-control" placeholder="Cari">
                             <div class="input-group-addon">
@@ -72,7 +127,8 @@
                                 <li class="nav-item"> <a class="nav-link" href="../home.php">HOME</a> </li>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="../product-page/index.php">Sandisk</a>
                                         <a class="dropdown-item" href="../product-page/index.php">Kingston</a>
@@ -85,7 +141,8 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <span class="glyphicon glyphicon-user"></span> 
-                                        <strong id="nama-atas">Hi <?php echo $_SESSION["logged-in"]["user"]; ?></strong>
+                                        <strong id="nama-atas">Hi
+                                            <?php echo $_SESSION["logged-in"]["user"]; ?></strong>
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
@@ -94,12 +151,16 @@
                                                 <div class="row">
                                                     <div class="col-lg-4">
                                                         <p class="text-center">
-                                                            <span class="glyphicon glyphicon-user icon-size"><img src="https://static.zerochan.net/Yasushi.full.414275.jpg" width="100%"></span>
+                                                            <span class="glyphicon glyphicon-user icon-size"><img src="https://static.zerochan.net/Yasushi.full.414275.jpg"
+                                                                    width="100%"></span>
                                                         </p>
                                                     </div>
                                                     <div class="col-lg-8">
-                                                        <p class="text-left"><strong><?php echo $_SESSION["logged-in"]["user"]; ?></strong></p>
-                                                        <p class="text-left small"><?php echo $_SESSION["logged-in"]["mail"]; ?></p>
+                                                        <p class="text-left"><strong>
+                                                                <?php echo $_SESSION["logged-in"]["user"]; ?></strong></p>
+                                                        <p class="text-left small">
+                                                            <?php echo $_SESSION["logged-in"]["mail"]; ?>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,7 +171,8 @@
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <p>
-                                                            <a href="../home.php?logout=1" class="btn btn-danger btn-block">Log Out</a>
+                                                            <a href="../home.php?logout=1" class="btn btn-danger btn-block">Log
+                                                                Out</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -140,70 +202,19 @@
     <div class="container-fluid bd-bottom mb-3">
         <nav class="nav-index" id="nav-index">
             <ul class="list inline">
-                <li class="list-inline-item"><a href="../index.html">Home</a></li>
-                <li class="list-inline-item"><a href="#">Page2</a></li>
-                <li class="list-inline-item"><a href="#">Page3</a></li>
+                <li class="list-inline-item"><a href="../home.php">Home</a></li>
+                <li class="list-inline-item"><a href="#">flashdisk</a></li>
+                <li class="list-inline-item"><a href="#">sandisk</a></li>
             </ul>
         </nav>
     </div>
 
     <div class="wrapper m-4">
         <nav id="sidebar">
-            <ul class="list-unstyled components">
-                <p class="bd-bottom">Dummy Heading</p>
-                <li>
-                    <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled">
-                        <li>
-                            <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" id="toggle">Page
-                                1</a>
-                            <ul class="collapse list-unstyled">
-                                <li>
-                                    <a href="#">subPage 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">subPage 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">subPage 3</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-
-                <li><a href="/xstore/GitHub/tugas7-fp-proposal-xstore/addProduct.php">Add Product</a></li>
-            </ul>
+            <?php echo $categories_list; ?>
+            <ul class="list-unstyled"><li><a href="/xstore/GitHub/tugas7-fp-proposal-xstore/addProduct.php">Add Product</a></li></ul>
         </nav>
+        
         <div id="content">
             <div class="row">
                 <?php foreach($result as $row): ?>
@@ -222,7 +233,7 @@
                             <!-- <p class="card-text">stok </p> -->
                         </div>
                         <div class="card-footer">
-                            
+
                             <?php if(isset($_SESSION['logged-in'])): ?>
                             <a class="btn btn-danger addCartBtn" href="?id=<?php echo $row['id']?>">Add to Cart</a>
                             <?php else: ?>

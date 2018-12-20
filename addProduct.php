@@ -22,6 +22,21 @@
 </head>
 
 <body>
+    <!-- db conn -->
+    <?php require_once('conn.php'); ?>
+
+    <!-- LogOut Logic -->
+    <?php  
+        if(isset($_GET['logout'])){
+            $filename = 'userdata/'.$_SESSION['logged-in']['user'].'.json';
+            file_put_contents($filename ,json_encode($_SESSION['cart'], FILE_APPEND) );
+            
+            unset($_SESSION['cart']);
+            unset($_SESSION['logged-in']);
+            
+            header('Location: home.php');
+        }
+    ?>
     <?php require 'addProductLogic.php'?>
     <!-- Nav Menu -->
     <div class="nav-menu fixed-top">
@@ -29,25 +44,26 @@
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-dark navbar-expand-lg">
-                        <a class="navbar-brand" href="index.html"><img src="images/logo.png" width="50%" class="img-fluid" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                        <a class="navbar-brand" href="home.php"><img src="images/logo.png" width="50%" class="img-fluid" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                         <div class="collapse navbar-collapse" id="navbar">
                             <ul class="navbar-nav ml-auto">
-                                <li class="nav-item"> <a class="nav-link active" href="#">HOME <span class="sr-only">(current)</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link active" href="home.php">HOME</a> </li>
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Sandisk</a>
-                                        <a class="dropdown-item" href="#">Kingston</a>
-                                        <a class="dropdown-item" href="#">Transcend</a>
+                                        <a class="dropdown-item" href="product-page/index.php">Sandisk</a>
+                                        <a class="dropdown-item" href="product-page/index.php">Kingston</a>
+                                        <a class="dropdown-item" href="product-page/index.php">Transcend</a>
                                     </div>
                                 </li>
-                                <li class="nav-item"> <a class="nav-link" href="#">ABOUT US</a> </li>
+                                <li class="nav-item"> <a class="nav-link" href="aboutus.php">ABOUT US</a> </li>
                                 <?php if(isset($_SESSION['logged-in'])): ?>
+                                <li class="nav-item"><a href="cart.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Cart</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <span class="glyphicon glyphicon-user"></span> 
-                                        <strong>Hi <?php echo $_SESSION["logged-in"]["user"]; ?></strong>
+                                        <strong id="nama-atas">Hi <?php echo $_SESSION["logged-in"]["user"]; ?></strong>
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
@@ -56,11 +72,11 @@
                                                 <div class="row">
                                                     <div class="col-lg-4">
                                                         <p class="text-center">
-                                                            <span class="glyphicon glyphicon-user icon-size"></span>
+                                                            <span class="glyphicon glyphicon-user icon-size"><img src="https://static.zerochan.net/Yasushi.full.414275.jpg" width="100%"></span>
                                                         </p>
                                                     </div>
                                                     <div class="col-lg-8">
-                                                        <p class="text-left"><strong><?php echo $_SESSION["logged-in"]["user"]; ?></strong></p>
+                                                        <p class="text-left nama-bawah"><strong><?php echo $_SESSION["logged-in"]["user"]; ?></strong></p>
                                                         <p class="text-left small"><?php echo $_SESSION["logged-in"]["mail"]; ?></p>
                                                     </div>
                                                 </div>
@@ -95,6 +111,13 @@
 
     </header>
     
+    <!-- get db data list -->
+    <?php 
+        $query = $db->prepare('SELECT id, subkategori FROM tkategori');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        // print_r($result);
+    ?>
     <div class="section">
         <div class="container">
             <div class="row">
@@ -105,22 +128,26 @@
             <div class="row">    
                 <div class="col-md-6">
                     <form role="form" method="post" action="" enctype="multipart/form-data">
-                        <select class="form-control" id="productSelect"><option>Please Select a Product Group</option>
-                            <option>Bar Soaps</option>
-                            <option>Lotions</option>
-                            <option>Creams</option>
-                        </select>    
+                        <div class="form-group">
+                            <label for="productselect" class="loginFormElement">Kategori</label>
+                            <select class="form-control" id="productSelect" name="kategori" required>
+                                <option value="">Please Select a Product Group</option>
+                                <?php foreach($result as $row): ?>
+                                <option value="<?php echo $row['id'];?>"><?php echo $row['subkategori'];?></option>
+                                <?php endforeach; ?>
+                            </select>    
+                        </div>
                         <div class="form-group">
                             <label for="productname" class="loginFormElement">Nama Produk</label>
-                            <input class="form-control" id="productname" type="text" name="nama">
+                            <input class="form-control" id="productname" type="text" name="nama" required>
                         </div>
                         <div class="form-group">
                             <label for="productprice" class="loginFormElement">Harga Produk</label>
-                            <input class="form-control" id="productprice" type="text" name="harga">
+                            <input class="form-control" id="productprice" type="text" name="harga" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Gambar Produk</label> 
-                            <input class="filestyle" data-icon="false" type="file" name="image">
+                            <input class="filestyle" data-icon="false" type="file" name="image" required>
                         </div>            
                         <div class="form-group">
                             <label class="loginformelement" for="productdescription">Deskripsi</label>
