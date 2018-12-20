@@ -7,13 +7,14 @@
         
         $condition = "'{$data[0]}'=pengguna.mail AND '{$data[1]}'=pengguna.pass AND pengguna.mail = b.mail";
  
-        $hasil = $db->query("SELECT pengguna.*, b.depan FROM pengguna, detail_orang b WHERE ".$condition)->fetch();
+        $hasil = $db->query("SELECT pengguna.*, b.depan, b.admin FROM pengguna, detail_orang b WHERE ".$condition)->fetch();
 //        print_r($hasil['depan']);
         
         if(!empty($hasil)){
             $_SESSION['logged-in'] = array();
             $_SESSION['logged-in']["user"]= $hasil['depan'];
             $_SESSION['logged-in']["mail"]= $hasil['mail'];
+            $_SESSION['logged-in']["rights"]= $hasil['admin'];
 
 
             $location = 'userdata/'.$hasil['depan'].'.json';
