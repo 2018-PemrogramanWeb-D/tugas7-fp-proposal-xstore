@@ -81,7 +81,7 @@
     ?>
     <?php
         if(isset($_GET['kategori'])){
-            $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk');
+            $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk WHERE kategori='.$_GET['kategori']);
         }
         else{
             $query = $db->prepare('SELECT id, nama, harga, gambar FROM tproduk');
@@ -89,7 +89,15 @@
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
     ?>
-
+    <!-- nama kategori -->
+    <?php 
+        if(isset($_GET['kategori'])){
+            $query = $db->prepare('SELECT subkategori FROM tkategori WHERE id='.$_GET['kategori']);
+            $query->execute();
+            $hasil = $query->fetchAll(PDO::FETCH_ASSOC);
+            $nama_kategori = $hasil[0]['subkategori'];
+        }
+    ?>
     <!-- LogOut Logic -->
     <?php 
         if(isset($_GET['logout'])){
@@ -130,9 +138,9 @@
                                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCTS</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="../product-page/index.php">Sandisk</a>
-                                        <a class="dropdown-item" href="../product-page/index.php">Kingston</a>
-                                        <a class="dropdown-item" href="../product-page/index.php">Transcend</a>
+                                        <a class="dropdown-item" href="../product-page/index.php?kategori=2">Sandisk</a>
+                                        <a class="dropdown-item" href="../product-page/index.php?kategori=3">Kingston</a>
+                                        <a class="dropdown-item" href="../product-page/index.php?kategori=4">Transcend</a>
                                     </div>
                                 </li>
                                 <li class="nav-item"> <a class="nav-link" href="../aboutus.php">ABOUT US</a> </li>
@@ -204,7 +212,9 @@
             <ul class="list inline">
                 <li class="list-inline-item"><a href="../home.php">Home</a></li>
                 <li class="list-inline-item"><a href="#">flashdisk</a></li>
-                <li class="list-inline-item"><a href="#">sandisk</a></li>
+                <?php if(isset($_GET['kategori'])):?>
+                <li class="list-inline-item"><a href="index.php?kategori=<?php echo $_GET['kategori']; ?>"><?php echo $nama_kategori; ?></a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </div>
